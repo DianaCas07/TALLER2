@@ -69,7 +69,6 @@ const tarifasPorPais = {
 
 const calcularCosto = (pais, peso) =>{
 
-    //convertir el nombre de pais a minusculas y eliminamos espacios.
     const paisNormalizado = pais.toLowerCase().replace(/\s+/g, '');
 
     if(!tarifasPorPais[paisNormalizado]){
