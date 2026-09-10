@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const port = 3157;
 
+
+//ejercicio 1
 app.get('/api/ivarenta/:monto', (req, res) =>{
     const monto = Number(req.params.monto);
 
@@ -21,7 +23,7 @@ rentaCalculada: renta,
 
 res.json(resObj);
 } catch(error){
-	res.status(500).json({error: 'Salario invalid o suceido un error en el calculo'});
+	res.status(500).json({error: 'Salario invalido o sucedo un error en el calculo'});
 }
 
 });
@@ -32,12 +34,14 @@ app.listen(port, () =>{
 
 app.use(express.json());
 
+
 //Ejercicio 2:
 
-// La ruta POST 
-app.post('/api/cotizar-envio', (req, res) => {
+app.get('/api/cotizar-envio/:pais/:peso', (req, res) => {
     try {
-        const { pais, peso } = req.body;
+            const { pais } = req.params;
+            const peso = parseFloat(req.params.peso); 
+
 
         if (!pais || peso === undefined) {
             throw new Error("Faltan parámetros requeridos. Debes enviar 'pais' y 'peso'.");
